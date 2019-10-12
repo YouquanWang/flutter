@@ -63,7 +63,7 @@ class _CartItemState extends State<CartItem> {
                                   child: Text(
                                     '宽松韩风字母印花系带设计 五分袖T恤',
                                     style: TextStyle(
-                                        color: Color.fromRGBO(17, 17, 17, 1),
+                                        color: Theme.of(context).textTheme.title.color,
                                         fontSize: ScreenAdaper.size(13)),
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
@@ -75,7 +75,7 @@ class _CartItemState extends State<CartItem> {
                                       style: TextStyle(
                                           fontSize: ScreenAdaper.size(12),
                                           color:
-                                              Color.fromRGBO(251, 72, 68, 1)),
+                                              Theme.of(context).accentColor),
                                       children: [
                                         TextSpan(
                                           text: '78',

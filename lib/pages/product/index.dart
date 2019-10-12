@@ -71,19 +71,19 @@ class _ProductPage extends State<ProductPage>
   }
 
   //下拉刷新
-  Future<void> _onRefresh() async {
-    await Future.delayed(Duration(milliseconds: 2000), () {
-      setState(() {
-        this.list = [];
-        this._page = 1;
-        this.flag = true;
-        this._hasMore = true;
-      });
-      this._getProduct();
-      _controller.resetLoadState();
-      _controller.finishRefresh();
-    });
-  }
+  // Future<void> _onRefresh() async {
+  //   await Future.delayed(Duration(milliseconds: 2000), () {
+  //     setState(() {
+  //       this.list = [];
+  //       this._page = 1;
+  //       this.flag = true;
+  //       this._hasMore = true;
+  //     });
+  //     this._getProduct();
+  //     _controller.resetLoadState();
+  //     _controller.finishRefresh();
+  //   });
+  // }
 
   Widget _productListWidget() {
     return Container(
@@ -137,7 +137,7 @@ class _ProductPage extends State<ProductPage>
                         child: Text(
                           "${this.list[index].productName}",
                           style: TextStyle(
-                              color: Color.fromRGBO(51, 51, 51, 1),
+                              color: Theme.of(context).textTheme.title.color,
                               fontSize: ScreenAdaper.size(13)),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -207,7 +207,7 @@ class _ProductPage extends State<ProductPage>
         ),
       ),
       body: Container(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         child: EasyRefresh(
           onRefresh: null,
           // enableControlFinishRefresh: true,

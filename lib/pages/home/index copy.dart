@@ -146,7 +146,7 @@ class _HomePage extends State<HomePage> {
                                     'HOT',
                                     style: TextStyle(
                                         fontSize: 14.0,
-                                        color: Color.fromRGBO(251, 72, 68, 1),
+                                        color: Theme.of(context).accentColor,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   SizedBox(
@@ -218,7 +218,7 @@ class _HomePage extends State<HomePage> {
                               end: Alignment.bottomCenter,
                               colors: [
                                 Color.fromRGBO(252, 139, 97, 1),
-                                Color.fromRGBO(251, 72, 68, 1),
+                                Theme.of(context).accentColor,
                               ],
                             ),
                             borderRadius:
@@ -227,7 +227,7 @@ class _HomePage extends State<HomePage> {
                       Text(
                         '购物区',
                         style: TextStyle(
-                            color: Color.fromRGBO(51, 51, 51, 1),
+                            color: Theme.of(context).textTheme.title.color,
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
@@ -301,7 +301,7 @@ class _HomePage extends State<HomePage> {
                                 child: Text(
                                   "${this.list[index]['product_name']}",
                                   style: TextStyle(
-                                      color: Color.fromRGBO(51, 51, 51, 1),
+                                      color: Theme.of(context).textTheme.title.color,
                                       fontSize: 13),
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
@@ -315,21 +315,21 @@ class _HomePage extends State<HomePage> {
                                     text: '¥',
                                     style: TextStyle(
                                         fontSize: 12,
-                                        color: Color.fromRGBO(251, 72, 68, 1)),
+                                        color: Theme.of(context).accentColor),
                                     children: [
                                       TextSpan(
                                         text: this.list[index]['sell_price'].split('.')[0],
                                         style: TextStyle(
                                             fontSize: 16,
                                             color:
-                                                Color.fromRGBO(251, 72, 68, 1)),
+                                                Theme.of(context).accentColor),
                                       ),
                                       TextSpan(
                                         text: '.'+ this.list[index]['sell_price'].split('.')[1],
                                         style: TextStyle(
                                             fontSize: 14,
                                             color:
-                                                Color.fromRGBO(251, 72, 68, 1)),
+                                                Theme.of(context).accentColor),
                                       )
                                     ]),
                               )
@@ -376,7 +376,7 @@ class _HomePage extends State<HomePage> {
                 //                 child: Text(
                 //                   'DILOVE蒂爱瑰花保险花DILOVE蒂爱瑰花保险花DILOVE蒂爱瑰花保险花DILOVE蒂爱瑰花保险花DILOVE蒂爱瑰花保险花',
                 //                   style: TextStyle(
-                //                       color: Color.fromRGBO(51, 51, 51, 1),
+                //                       color: Theme.of(context).textTheme.title.color,
                 //                       fontSize: 13),
                 //                   maxLines: 2,
                 //                   overflow: TextOverflow.ellipsis,
@@ -390,21 +390,21 @@ class _HomePage extends State<HomePage> {
                 //                     text: '¥',
                 //                     style: TextStyle(
                 //                         fontSize: 12,
-                //                         color: Color.fromRGBO(251, 72, 68, 1)),
+                //                         color: Theme.of(context).accentColor),
                 //                     children: [
                 //                       TextSpan(
                 //                         text: '100',
                 //                         style: TextStyle(
                 //                             fontSize: 16,
                 //                             color:
-                //                                 Color.fromRGBO(251, 72, 68, 1)),
+                //                                 Theme.of(context).accentColor),
                 //                       ),
                 //                       TextSpan(
                 //                         text: '.00',
                 //                         style: TextStyle(
                 //                             fontSize: 14,
                 //                             color:
-                //                                 Color.fromRGBO(251, 72, 68, 1)),
+                //                                 Theme.of(context).accentColor),
                 //                       )
                 //                     ]),
                 //               )
@@ -449,7 +449,7 @@ class _HomePage extends State<HomePage> {
                 //                 child: Text(
                 //                   'DILOVE蒂爱瑰花保险花',
                 //                   style: TextStyle(
-                //                       color: Color.fromRGBO(51, 51, 51, 1),
+                //                       color: Theme.of(context).textTheme.title.color,
                 //                       fontSize: 13),
                 //                   maxLines: 2,
                 //                   overflow: TextOverflow.ellipsis,
@@ -463,21 +463,21 @@ class _HomePage extends State<HomePage> {
                 //                     text: '¥',
                 //                     style: TextStyle(
                 //                         fontSize: 12,
-                //                         color: Color.fromRGBO(251, 72, 68, 1)),
+                //                         color: Theme.of(context).accentColor),
                 //                     children: [
                 //                       TextSpan(
                 //                         text: '100',
                 //                         style: TextStyle(
                 //                             fontSize: 16,
                 //                             color:
-                //                                 Color.fromRGBO(251, 72, 68, 1)),
+                //                                 Theme.of(context).accentColor),
                 //                       ),
                 //                       TextSpan(
                 //                         text: '.00',
                 //                         style: TextStyle(
                 //                             fontSize: 14,
                 //                             color:
-                //                                 Color.fromRGBO(251, 72, 68, 1)),
+                //                                 Theme.of(context).accentColor),
                 //                       )
                 //                     ]),
                 //               )
@@ -522,7 +522,7 @@ class _HomePage extends State<HomePage> {
                 //                 child: Text(
                 //                   'DILOVE蒂爱瑰花保险花DILOVE蒂爱瑰花保险花DILOVE蒂爱瑰花保险花DILOVE蒂爱瑰花保险花DILOVE蒂爱瑰花保险花',
                 //                   style: TextStyle(
-                //                       color: Color.fromRGBO(51, 51, 51, 1),
+                //                       color: Theme.of(context).textTheme.title.color,
                 //                       fontSize: 13),
                 //                   maxLines: 2,
                 //                   overflow: TextOverflow.ellipsis,
@@ -536,21 +536,21 @@ class _HomePage extends State<HomePage> {
                 //                     text: '¥',
                 //                     style: TextStyle(
                 //                         fontSize: 12,
-                //                         color: Color.fromRGBO(251, 72, 68, 1)),
+                //                         color: Theme.of(context).accentColor),
                 //                     children: [
                 //                       TextSpan(
                 //                         text: '100',
                 //                         style: TextStyle(
                 //                             fontSize: 16,
                 //                             color:
-                //                                 Color.fromRGBO(251, 72, 68, 1)),
+                //                                 Theme.of(context).accentColor),
                 //                       ),
                 //                       TextSpan(
                 //                         text: '.00',
                 //                         style: TextStyle(
                 //                             fontSize: 14,
                 //                             color:
-                //                                 Color.fromRGBO(251, 72, 68, 1)),
+                //                                 Theme.of(context).accentColor),
                 //                       )
                 //                     ]),
                 //               )
@@ -595,7 +595,7 @@ class _HomePage extends State<HomePage> {
                 //                 child: Text(
                 //                   '【今日直降】荣耀10青春版 2400万AI自拍全网最【今日直降】荣耀10青春版 2400万AI自拍全网最',
                 //                   style: TextStyle(
-                //                       color: Color.fromRGBO(51, 51, 51, 1),
+                //                       color: Theme.of(context).textTheme.title.color,
                 //                       fontSize: 13),
                 //                   maxLines: 2,
                 //                   overflow: TextOverflow.ellipsis,
@@ -609,21 +609,21 @@ class _HomePage extends State<HomePage> {
                 //                     text: '¥',
                 //                     style: TextStyle(
                 //                         fontSize: 12,
-                //                         color: Color.fromRGBO(251, 72, 68, 1)),
+                //                         color: Theme.of(context).accentColor),
                 //                     children: [
                 //                       TextSpan(
                 //                         text: '100',
                 //                         style: TextStyle(
                 //                             fontSize: 16,
                 //                             color:
-                //                                 Color.fromRGBO(251, 72, 68, 1)),
+                //                                 Theme.of(context).accentColor),
                 //                       ),
                 //                       TextSpan(
                 //                         text: '.00',
                 //                         style: TextStyle(
                 //                             fontSize: 14,
                 //                             color:
-                //                                 Color.fromRGBO(251, 72, 68, 1)),
+                //                                 Theme.of(context).accentColor),
                 //                       )
                 //                     ]),
                 //               )

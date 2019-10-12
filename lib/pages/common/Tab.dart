@@ -35,8 +35,8 @@ class _Tabs extends State<Tabs> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: this._currentIndex,
-        selectedItemColor: Color.fromRGBO(251, 72, 68, 1),
-        // fixedColor: Color.fromRGBO(51, 51, 51, 1),
+        selectedItemColor: Theme.of(context).accentColor,
+        // fixedColor: Theme.of(context).textTheme.title.color,
         backgroundColor: Color.fromRGBO(255, 255, 255, 1),
         selectedFontSize: 12.0,
         onTap: (int index) {

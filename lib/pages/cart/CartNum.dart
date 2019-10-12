@@ -64,7 +64,7 @@ class _CartNumState extends State<CartNum> {
        style: TextStyle(
            fontSize: ScreenAdaper.size(12),
            fontWeight: FontWeight.bold,
-           color: Color.fromRGBO(17, 17, 17, 1)
+           color: Theme.of(context).textTheme.title.color
          ),
       ),
     );

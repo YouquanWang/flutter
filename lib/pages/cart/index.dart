@@ -15,7 +15,7 @@ class _CartPage extends State<CartPage> {
         title: Text('购物车'),
       ),
       body: Container(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         child: Stack(
           children: <Widget>[
             ListView(
@@ -63,7 +63,7 @@ class _CartPage extends State<CartPage> {
                             "全选",
                             style: TextStyle(
                                 fontSize: ScreenAdaper.size(14),
-                                color: Color.fromRGBO(17, 17, 17, 1)),
+                                color: Theme.of(context).textTheme.title.color),
                           )
                         ],
                       ),
@@ -79,14 +79,14 @@ class _CartPage extends State<CartPage> {
                               style: TextStyle(
                                   fontSize: ScreenAdaper.size(14),
                                   fontWeight: FontWeight.bold,
-                                  color: Color.fromRGBO(17, 17, 17, 1)),
+                                  color: Theme.of(context).textTheme.title.color),
                             ),
                             Text(
                               '￥1,900.00',
                               style: TextStyle(
                                   fontSize: ScreenAdaper.size(16),
                                   fontWeight: FontWeight.bold,
-                                  color: Color.fromRGBO(251, 72, 68, 1)),
+                                  color: Theme.of(context).accentColor),
                             )
                           ],
                         ),
@@ -95,7 +95,7 @@ class _CartPage extends State<CartPage> {
                     Container(
                       width: ScreenAdaper.width(120),
                       height: ScreenAdaper.height(50),
-                      color: Color.fromRGBO(251, 72, 68, 1),
+                      color: Theme.of(context).accentColor,
                       child: Center(
                         child: Text(
                           '去结算(2)',

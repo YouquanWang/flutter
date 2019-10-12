@@ -14,7 +14,25 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       onGenerateRoute: onGenerateRoute,
       theme: ThemeData(
-        primaryColor: Colors.white
+        primaryColor: Colors.white,
+        accentColor: Color(0XFFFB4844),
+        backgroundColor: Colors.white,
+        accentTextTheme: TextTheme(
+          title: TextStyle(
+            color: Colors.white
+          )
+        ),
+        textTheme: TextTheme(
+          title: TextStyle(
+            color: Color(0XFF333333)
+          ),
+          subtitle: TextStyle(
+            color: Color(0XFF999999)
+          ),
+          subhead: TextStyle(
+            color: Color(0XFF666666)
+          ),
+        )
       ),
     );
   }

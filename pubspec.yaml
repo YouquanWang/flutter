@@ -55,7 +55,45 @@ flutter:
    - images/next.png
    - images/2.0x/next.png
    - images/3.0x/next.png
-
+   - images/pay_wait.png
+   - images/2.0x/pay_wait.png
+   - images/3.0x/pay_wait.png
+   - images/fahuo_wait.png
+   - images/2.0x/fahuo_wait.png
+   - images/3.0x/fahuo_wait.png
+   - images/shouhuo_wait.png
+   - images/2.0x/shouhuo_wait.png
+   - images/3.0x/shouhuo_wait.png
+   - images/order_total.png
+   - images/2.0x/order_total.png
+   - images/3.0x/order_total.png
+   - images/user_bg.png
+   - images/2.0x/user_bg.png
+   - images/3.0x/user_bg.png
+   - images/yewu.png
+   - images/2.0x/yewu.png
+   - images/3.0x/yewu.png
+   - images/myteam.png
+   - images/2.0x/myteam.png
+   - images/3.0x/myteam.png
+   - images/jiangjin.png
+   - images/2.0x/jiangjin.png
+   - images/3.0x/jiangjin.png
+   - images/tixian.png
+   - images/2.0x/tixian.png
+   - images/3.0x/tixian.png
+   - images/zhuanhuan.png
+   - images/2.0x/zhuanhuan.png
+   - images/3.0x/zhuanhuan.png
+   - images/chongzhi.png
+   - images/2.0x/chongzhi.png
+   - images/3.0x/chongzhi.png
+   - images/xinxi.png
+   - images/2.0x/xinxi.png
+   - images/3.0x/xinxi.png
+   - images/bank.png
+   - images/2.0x/bank.png
+   - images/3.0x/bank.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

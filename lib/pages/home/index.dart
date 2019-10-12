@@ -111,7 +111,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
               Text(
                 '首页',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Theme.of(context).accentTextTheme.title.color,
                     fontSize: ScreenAdaper.size(20),
                     fontWeight: FontWeight.bold),
               ),
@@ -133,8 +133,8 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10))),
             child: Swiper(
+              autoplay: true,
               itemBuilder: (BuildContext context, int index) {
-                // return ;
                 return ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   child: Image.network(
@@ -144,8 +144,12 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
                 );
               },
               itemCount: 3,
-              pagination: SwiperPagination(),
-              // control: new SwiperControl(),
+              pagination: SwiperPagination(
+                  builder: DotSwiperPaginationBuilder(
+                      size: 5, //点点没选中时候的大小
+                      activeSize: 5, //点点选中后的大小
+                      color: Colors.white, //点点的颜色
+                      activeColor: Theme.of(context).accentColor)),
             ),
           )
         ],
@@ -186,6 +190,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
             Expanded(
               flex: 1,
               child: Swiper(
+                autoplay: true,
                 containerHeight: ScreenAdaper.height(44),
                 itemHeight: ScreenAdaper.height(44),
                 scrollDirection: Axis.vertical,
@@ -198,7 +203,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
                             'HOT',
                             style: TextStyle(
                                 fontSize: ScreenAdaper.size(14),
-                                color: Color.fromRGBO(251, 72, 68, 1),
+                                color: Theme.of(context).accentColor,
                                 fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
@@ -272,7 +277,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
                       end: Alignment.bottomCenter,
                       colors: [
                         Color.fromRGBO(252, 139, 97, 1),
-                        Color.fromRGBO(251, 72, 68, 1),
+                        Theme.of(context).accentColor,
                       ],
                     ),
                     borderRadius: BorderRadius.all(Radius.circular(2.0))),
@@ -280,7 +285,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
               Text(
                 '购物区',
                 style: TextStyle(
-                    color: Color.fromRGBO(51, 51, 51, 1),
+                    color: Theme.of(context).textTheme.title.color,
                     fontSize: ScreenAdaper.size(16),
                     fontWeight: FontWeight.bold),
               ),
@@ -357,7 +362,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
                         child: Text(
                           "${this.list[index].productName}",
                           style: TextStyle(
-                              color: Color.fromRGBO(51, 51, 51, 1),
+                              color: Theme.of(context).textTheme.title.color,
                               fontSize: ScreenAdaper.size(13)),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -371,20 +376,20 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
                             text: '¥',
                             style: TextStyle(
                                 fontSize: ScreenAdaper.size(12),
-                                color: Color.fromRGBO(251, 72, 68, 1)),
+                                color: Theme.of(context).accentColor),
                             children: [
                               TextSpan(
                                 text: this.list[index].sellPrice.split('.')[0],
                                 style: TextStyle(
                                     fontSize: ScreenAdaper.size(16),
-                                    color: Color.fromRGBO(251, 72, 68, 1)),
+                                    color: Theme.of(context).accentColor),
                               ),
                               TextSpan(
                                 text: '.' +
                                     this.list[index].sellPrice.split('.')[1],
                                 style: TextStyle(
                                     fontSize: ScreenAdaper.size(14),
-                                    color: Color.fromRGBO(251, 72, 68, 1)),
+                                    color: Theme.of(context).accentColor),
                               )
                             ]),
                       )
@@ -407,7 +412,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
       //   title: Text('首页'),
       // ),
       body: Container(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         child: EasyRefresh(
           onRefresh: this._onRefresh,
           enableControlFinishRefresh: true,

@@ -20,6 +20,6 @@ class LoadingWidget extends StatelessWidget {
           ],
         ),
       ),
-    );;
+    );
   }
 }
