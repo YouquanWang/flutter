@@ -8,7 +8,7 @@ class UserCenterPage extends StatefulWidget {
 }
 
 class _UserCenterPage extends State<UserCenterPage> {
-  double itemWidth = (ScreenAdaper.getScreenWidth() - 34) / 4;
+  double itemWidth = (ScreenAdaper.getScreenWidth() - ScreenAdaper.width(34)) / 4;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +55,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                                 EdgeInsets.only(right: ScreenAdaper.width(10)),
                             decoration: BoxDecoration(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
+                                    BorderRadius.all(Radius.circular(40)),
                                 border: Border.all(
                                     width: 2,
                                     color: Color.fromRGBO(255, 255, 255, 0.5))),
@@ -63,7 +63,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                               child: Image.network(
                                 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568786047485&di=e424439ccc47ff41f8f91dda1af0d01d&imgtype=0&src=http%3A%2F%2Fwww.xihabang.com%2Fuploadfile%2F2013%2F1127%2F20131127034933696.png',
                                 width: ScreenAdaper.width(56),
-                                height: ScreenAdaper.height(56),
+                                height: ScreenAdaper.width(56),
                                 fit: BoxFit.cover,
                               ),
                             ),
