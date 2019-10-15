@@ -8,7 +8,7 @@ class UserCenterPage extends StatefulWidget {
 }
 
 class _UserCenterPage extends State<UserCenterPage> {
-  double itemWidth = (ScreenAdaper.getScreenWidth() - ScreenAdaper.width(34)) / 4;
+  double itemWidth = (ScreenAdaper.getScreenWidth() - ScreenAdaper.width(38)) / 4;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
