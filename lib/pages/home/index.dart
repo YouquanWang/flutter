@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
-import 'package:flutter_easyrefresh/ball_pulse_header.dart';
-import 'package:flutter_easyrefresh/phoenix_footer.dart';
+// import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
+// import 'package:flutter_easyrefresh/ball_pulse_header.dart';
+// import 'package:flutter_easyrefresh/phoenix_footer.dart';
 import 'package:flutter_easyrefresh/phoenix_header.dart';
-import 'package:flutter_easyrefresh/bezier_circle_header.dart';
-import 'package:flutter_easyrefresh/bezier_bounce_footer.dart';
+// import 'package:flutter_easyrefresh/bezier_circle_header.dart';
+// import 'package:flutter_easyrefresh/bezier_bounce_footer.dart';
 import '../../services/ScreenAdaper.dart';
 import '../../model/ProductListModel.dart';
 
@@ -29,9 +29,6 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
   bool flag = true;
   //是否有数据
   bool _hasMore = true;
-
-  @override
-  bool get wantKeepAlive => true;
 
   void initState() {
     super.initState();
@@ -129,7 +126,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
             height: ScreenAdaper.height(12),
           ),
           Container(
-            height: ScreenAdaper.height(180.0),
+            height: ScreenAdaper.width(180.0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10))),
             child: Swiper(
@@ -405,7 +402,9 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
   }
 
   @override
+  bool get wantKeepAlive => true;
   Widget build(BuildContext context) {
+    super.build(context);
     ScreenAdaper.init(context);
     return Scaffold(
       // appBar: AppBar(

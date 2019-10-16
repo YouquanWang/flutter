@@ -26,7 +26,7 @@ class _UserCenterPage extends State<UserCenterPage> {
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.fromLTRB(ScreenAdaper.width(12),
-                      ScreenAdaper.height(30), ScreenAdaper.width(12), 0),
+                      ScreenAdaper.width(30), ScreenAdaper.width(12), 0),
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('images/user_bg.png'),
@@ -46,7 +46,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                         alignment: Alignment.centerRight,
                       ),
                       SizedBox(
-                        height: ScreenAdaper.height(15),
+                        height: ScreenAdaper.width(15),
                       ),
                       Row(
                         children: <Widget>[
@@ -121,7 +121,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: ScreenAdaper.height(40)),
+                        margin: EdgeInsets.only(top: ScreenAdaper.width(40)),
                         padding: EdgeInsets.fromLTRB(
                             ScreenAdaper.width(5),
                             ScreenAdaper.width(20),
@@ -146,7 +146,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                                   Image.asset(
                                     'images/pay_wait.png',
                                     width: ScreenAdaper.width(28),
-                                    height: ScreenAdaper.height(28),
+                                    height: ScreenAdaper.width(28),
                                   ),
                                   SizedBox(
                                     height: ScreenAdaper.height(10),
@@ -167,7 +167,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                                   Image.asset(
                                     'images/fahuo_wait.png',
                                     width: ScreenAdaper.width(28),
-                                    height: ScreenAdaper.height(28),
+                                    height: ScreenAdaper.width(28),
                                   ),
                                   SizedBox(
                                     height: ScreenAdaper.height(10),
@@ -188,7 +188,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                                   Image.asset(
                                     'images/shouhuo_wait.png',
                                     width: ScreenAdaper.width(28),
-                                    height: ScreenAdaper.height(28),
+                                    height: ScreenAdaper.width(28),
                                   ),
                                   SizedBox(
                                     height: ScreenAdaper.height(10),
@@ -209,7 +209,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                                   Image.asset(
                                     'images/order_total.png',
                                     width: ScreenAdaper.width(28),
-                                    height: ScreenAdaper.height(28),
+                                    height: ScreenAdaper.width(28),
                                   ),
                                   SizedBox(
                                     height: ScreenAdaper.height(10),
@@ -587,7 +587,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                               Image.asset(
                                 'images/pay_wait.png',
                                 width: ScreenAdaper.width(24),
-                                height: ScreenAdaper.height(24),
+                                height: ScreenAdaper.width(24),
                               ),
                               SizedBox(
                                 height: ScreenAdaper.height(8),
@@ -611,7 +611,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                               Image.asset(
                                 'images/myteam.png',
                                 width: ScreenAdaper.width(24),
-                                height: ScreenAdaper.height(24),
+                                height: ScreenAdaper.width(24),
                               ),
                               SizedBox(
                                 height: ScreenAdaper.height(8),
@@ -635,7 +635,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                               Image.asset(
                                 'images/jiangjin.png',
                                 width: ScreenAdaper.width(24),
-                                height: ScreenAdaper.height(24),
+                                height: ScreenAdaper.width(24),
                               ),
                               SizedBox(
                                 height: ScreenAdaper.height(8),
@@ -659,7 +659,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                               Image.asset(
                                 'images/tixian.png',
                                 width: ScreenAdaper.width(24),
-                                height: ScreenAdaper.height(24),
+                                height: ScreenAdaper.width(24),
                               ),
                               SizedBox(
                                 height: ScreenAdaper.height(8),
@@ -683,7 +683,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                               Image.asset(
                                 'images/zhuanhuan.png',
                                 width: ScreenAdaper.width(24),
-                                height: ScreenAdaper.height(24),
+                                height: ScreenAdaper.width(24),
                               ),
                               SizedBox(
                                 height: ScreenAdaper.height(8),
@@ -707,7 +707,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                               Image.asset(
                                 'images/chongzhi.png',
                                 width: ScreenAdaper.width(24),
-                                height: ScreenAdaper.height(24),
+                                height: ScreenAdaper.width(24),
                               ),
                               SizedBox(
                                 height: ScreenAdaper.height(8),
@@ -731,7 +731,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                               Image.asset(
                                 'images/xinxi.png',
                                 width: ScreenAdaper.width(24),
-                                height: ScreenAdaper.height(24),
+                                height: ScreenAdaper.width(24),
                               ),
                               SizedBox(
                                 height: ScreenAdaper.height(8),
@@ -755,7 +755,7 @@ class _UserCenterPage extends State<UserCenterPage> {
                               Image.asset(
                                 'images/bank.png',
                                 width: ScreenAdaper.width(24),
-                                height: ScreenAdaper.height(24),
+                                height: ScreenAdaper.width(24),
                               ),
                               SizedBox(
                                 height: ScreenAdaper.height(8),

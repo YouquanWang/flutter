@@ -44,7 +44,7 @@ class _CartItemState extends State<CartItem> {
                       children: <Widget>[
                         Container(
                           width: ScreenAdaper.width(85),
-                          height: ScreenAdaper.height(85),
+                          height: ScreenAdaper.width(85),
                           margin:
                               EdgeInsets.only(right: ScreenAdaper.width(10)),
                           child: Image.network(
@@ -54,7 +54,7 @@ class _CartItemState extends State<CartItem> {
                         Expanded(
                           flex: 1,
                           child: Container(
-                            height: ScreenAdaper.height(85),
+                            height: ScreenAdaper.width(85),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

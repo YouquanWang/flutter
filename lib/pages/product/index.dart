@@ -180,6 +180,7 @@ class _ProductPage extends State<ProductPage>
   }
 
   Widget build(BuildContext context) {
+    super.build(context);
     ScreenAdaper.init(context);
     return Scaffold(
       appBar: AppBar(
