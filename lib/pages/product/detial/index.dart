@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -63,3 +64,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     );
   }
 }
+=======
+import 'package:flutter/material.dart';
+>>>>>>> xiugai

@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import '../../services/ScreenAdaper.dart';
-import '../../model/ProductListModel.dart';
+// import '../../model/ProductListModel.dart';
 
 class ProductPage extends StatefulWidget {
   @override
@@ -39,35 +39,32 @@ class _ProductPage extends State<ProductPage>
       this.flag = false;
     });
     var apiurl = 'https://v3test-xsy.dsceshi.cn/api/v1/basic/product/Listss';
-    try {
-      Response response;
-      Dio dio = new Dio();
-      response = await dio.post(apiurl,
-          data: FormData.fromMap({
-            '_order': 'w_time',
-            '_sort': 0,
-            'stype': '',
-            'device': 'mobile',
-            'page': this._page
-          }));
-      var result = ProductListModel.fromJson(json.decode(response.data));
-      var data = result.data.data;
-      if (data.length < this._pageSize) {
-        setState(() {
-          this.list.addAll(data);
-          this._hasMore = false;
-          this.flag = true;
-        });
-      } else {
-        setState(() {
-          this.list.addAll(data);
-          this._page++;
-          this.flag = true;
-        });
-      }
-    } catch (e) {
-      print(e);
-    }
+    // try {
+    //   Response response;
+    //   Dio dio = new Dio();
+    //   response = await dio.post(apiurl,
+    //       data: FormData.fromMap({
+    //         'limit': 8,
+    //         'page': this._page
+    //       }));
+    //   var result = ProductListModel.fromJson(json.decode(response.data));
+    //   var data = result.data;
+    //   if (data.length < this._pageSize) {
+    //     setState(() {
+    //       this.list.addAll(data);
+    //       this._hasMore = false;
+    //       this.flag = true;
+    //     });
+    //   } else {
+    //     setState(() {
+    //       this.list.addAll(data);
+    //       this._page++;
+    //       this.flag = true;
+    //     });
+    //   }
+    // } catch (e) {
+    //   print(e);
+    // }
   }
 
   //下拉刷新
@@ -122,7 +119,7 @@ class _ProductPage extends State<ProductPage>
                   child: AspectRatio(
                     aspectRatio: 1,
                     child: Image.network(
-                      this.list[index].image,
+                      this.list[index].pic,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -135,7 +132,7 @@ class _ProductPage extends State<ProductPage>
                       Container(
                         height: ScreenAdaper.height(32),
                         child: Text(
-                          "${this.list[index].productName}",
+                          "${this.list[index].title}",
                           style: TextStyle(
                               color: Theme.of(context).textTheme.title.color,
                               fontSize: ScreenAdaper.size(13)),
@@ -154,14 +151,14 @@ class _ProductPage extends State<ProductPage>
                                 color: Color.fromRGBO(251, 72, 68, 1)),
                             children: [
                               TextSpan(
-                                text: this.list[index].sellPrice.split('.')[0],
+                                text: this.list[index].price.split('.')[0],
                                 style: TextStyle(
                                     fontSize: ScreenAdaper.size(16),
                                     color: Color.fromRGBO(251, 72, 68, 1)),
                               ),
                               TextSpan(
                                 text: '.' +
-                                    this.list[index].sellPrice.split('.')[1],
+                                    this.list[index].price.split('.')[1],
                                 style: TextStyle(
                                     fontSize: ScreenAdaper.size(14),
                                     color: Color.fromRGBO(251, 72, 68, 1)),

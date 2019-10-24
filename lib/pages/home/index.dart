@@ -8,10 +8,11 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 // import 'package:flutter_easyrefresh/ball_pulse_header.dart';
 // import 'package:flutter_easyrefresh/phoenix_footer.dart';
 import 'package:flutter_easyrefresh/phoenix_header.dart';
+// import 'package:jiesuanflutter/model/ProductModel.dart';
 // import 'package:flutter_easyrefresh/bezier_circle_header.dart';
 // import 'package:flutter_easyrefresh/bezier_bounce_footer.dart';
 import '../../services/ScreenAdaper.dart';
-import '../../model/ProductListModel.dart';
+import '../../model/product_model.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -41,20 +42,17 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
     setState(() {
       this.flag = false;
     });
-    var apiurl = 'https://v3test-xsy.dsceshi.cn/api/v1/basic/product/Listss';
+    var apiurl = 'http://localhost:4000/api/product/list';
     try {
       Response response;
       Dio dio = new Dio();
       response = await dio.post(apiurl,
-          data: FormData.fromMap({
-            '_order': 'w_time',
-            '_sort': 0,
-            'stype': 2,
-            'device': 'mobile',
+          data: {
+            'limit': 8,
             'page': this._page
-          }));
-      var result = ProductListModel.fromJson(json.decode(response.data));
-      var data = result.data.data;
+          });
+      var result = productModel.fromJson(response.data);
+      var data = result.data;
       if (data.length < this._pageSize) {
         setState(() {
           this.list.addAll(data);
@@ -316,7 +314,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
         primary: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 66 / 100,
+            childAspectRatio: 65 / 100,
             crossAxisSpacing: ScreenAdaper.width(5),
             mainAxisSpacing: ScreenAdaper.width(5)),
         padding: EdgeInsets.fromLTRB(0, 0, 0, ScreenAdaper.width(10)),
@@ -344,7 +342,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
                   child: AspectRatio(
                     aspectRatio: 1,
                     child: Image.network(
-                      this.list[index].image,
+                      this.list[index].pic,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -357,7 +355,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
                       Container(
                         height: ScreenAdaper.height(32),
                         child: Text(
-                          "${this.list[index].productName}",
+                          "${this.list[index].title}",
                           style: TextStyle(
                               color: Theme.of(context).textTheme.title.color,
                               fontSize: ScreenAdaper.size(13)),
@@ -376,14 +374,14 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
                                 color: Theme.of(context).accentColor),
                             children: [
                               TextSpan(
-                                text: this.list[index].sellPrice.split('.')[0],
+                                text: this.list[index].price.split('.')[0],
                                 style: TextStyle(
                                     fontSize: ScreenAdaper.size(16),
                                     color: Theme.of(context).accentColor),
                               ),
                               TextSpan(
                                 text: '.' +
-                                    this.list[index].sellPrice.split('.')[1],
+                                    this.list[index].price.split('.')[1],
                                 style: TextStyle(
                                     fontSize: ScreenAdaper.size(14),
                                     color: Theme.of(context).accentColor),
