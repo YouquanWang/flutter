@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import '../../services/ScreenAdaper.dart';
-// import '../../model/ProductListModel.dart';
+import '../../model/product_model.dart';
 
 class ProductPage extends StatefulWidget {
   @override
@@ -34,53 +34,49 @@ class _ProductPage extends State<ProductPage>
     this._getProduct();
   }
 
-  void _getProduct() async {
+void _getProduct() async {
     setState(() {
       this.flag = false;
     });
-    var apiurl = 'https://v3test-xsy.dsceshi.cn/api/v1/basic/product/Listss';
-    // try {
-    //   Response response;
-    //   Dio dio = new Dio();
-    //   response = await dio.post(apiurl,
-    //       data: FormData.fromMap({
-    //         'limit': 8,
-    //         'page': this._page
-    //       }));
-    //   var result = ProductListModel.fromJson(json.decode(response.data));
-    //   var data = result.data;
-    //   if (data.length < this._pageSize) {
-    //     setState(() {
-    //       this.list.addAll(data);
-    //       this._hasMore = false;
-    //       this.flag = true;
-    //     });
-    //   } else {
-    //     setState(() {
-    //       this.list.addAll(data);
-    //       this._page++;
-    //       this.flag = true;
-    //     });
-    //   }
-    // } catch (e) {
-    //   print(e);
-    // }
+    var apiurl = 'http://localhost:4000/api/product/list';
+    try {
+      Response response;
+      Dio dio = new Dio();
+      response = await dio.post(apiurl, data: {'limit': 8, 'page': this._page});
+      var result = productModel.fromJson(response.data);
+      var data = result.data;
+      if (data.length < this._pageSize) {
+        setState(() {
+          this.list.addAll(data);
+          this._hasMore = false;
+          this.flag = true;
+        });
+      } else {
+        setState(() {
+          this.list.addAll(data);
+          this._page++;
+          this.flag = true;
+        });
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   //下拉刷新
-  // Future<void> _onRefresh() async {
-  //   await Future.delayed(Duration(milliseconds: 2000), () {
-  //     setState(() {
-  //       this.list = [];
-  //       this._page = 1;
-  //       this.flag = true;
-  //       this._hasMore = true;
-  //     });
-  //     this._getProduct();
-  //     _controller.resetLoadState();
-  //     _controller.finishRefresh();
-  //   });
-  // }
+  Future<void> _onRefresh() async {
+    await Future.delayed(Duration(milliseconds: 2000), () {
+      setState(() {
+        this.list = [];
+        this._page = 1;
+        this.flag = true;
+        this._hasMore = true;
+      });
+      this._getProduct();
+      _controller.resetLoadState();
+      _controller.finishRefresh();
+    });
+  }
 
   Widget _productListWidget() {
     return Container(
@@ -91,84 +87,90 @@ class _ProductPage extends State<ProductPage>
         primary: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 66 / 100,
+            childAspectRatio: 65 / 100,
             crossAxisSpacing: ScreenAdaper.width(5),
             mainAxisSpacing: ScreenAdaper.width(5)),
         padding: EdgeInsets.fromLTRB(0, 0, 0, ScreenAdaper.width(10)),
         physics: NeverScrollableScrollPhysics(),
         itemCount: this.list.length,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Color.fromRGBO(0, 0, 0, 0.08),
-                    blurRadius: 6,
-                    offset: Offset(0, 3))
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10)),
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: Image.network(
-                      this.list[index].pic,
-                      fit: BoxFit.cover,
+          return InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, '/product/detial',
+                        arguments: {"id": this.list[index].id});
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                      color: Color.fromRGBO(0, 0, 0, 0.06),
+                      blurRadius: 8,
+                      offset: Offset(0, 3))
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10)),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Image.network(
+                        this.list[index].pic,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        height: ScreenAdaper.height(32),
-                        child: Text(
-                          "${this.list[index].title}",
-                          style: TextStyle(
-                              color: Theme.of(context).textTheme.title.color,
-                              fontSize: ScreenAdaper.size(13)),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: ScreenAdaper.height(10),
-                      ),
-                      Text.rich(
-                        TextSpan(
-                            text: '¥',
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          height: ScreenAdaper.height(32),
+                          child: Text(
+                            "${this.list[index].title}",
                             style: TextStyle(
-                                fontSize: ScreenAdaper.size(12),
-                                color: Color.fromRGBO(251, 72, 68, 1)),
-                            children: [
-                              TextSpan(
-                                text: this.list[index].price.split('.')[0],
-                                style: TextStyle(
-                                    fontSize: ScreenAdaper.size(16),
-                                    color: Color.fromRGBO(251, 72, 68, 1)),
-                              ),
-                              TextSpan(
-                                text: '.' +
-                                    this.list[index].price.split('.')[1],
-                                style: TextStyle(
-                                    fontSize: ScreenAdaper.size(14),
-                                    color: Color.fromRGBO(251, 72, 68, 1)),
-                              )
-                            ]),
-                      )
-                    ],
+                                color: Theme.of(context).textTheme.title.color,
+                                fontSize: ScreenAdaper.size(13)),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        SizedBox(
+                          height: ScreenAdaper.height(10),
+                        ),
+                        Text.rich(
+                          TextSpan(
+                              text: '¥',
+                              style: TextStyle(
+                                  fontSize: ScreenAdaper.size(12),
+                                  color: Theme.of(context).accentColor),
+                              children: [
+                                TextSpan(
+                                  text: this.list[index].price.split('.')[0],
+                                  style: TextStyle(
+                                      fontSize: ScreenAdaper.size(16),
+                                      color: Theme.of(context).accentColor),
+                                ),
+                                TextSpan(
+                                  text: '.' +
+                                      this.list[index].price.split('.')[1],
+                                  style: TextStyle(
+                                      fontSize: ScreenAdaper.size(14),
+                                      color: Theme.of(context).accentColor),
+                                )
+                              ]),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },

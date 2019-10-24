@@ -46,11 +46,7 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
     try {
       Response response;
       Dio dio = new Dio();
-      response = await dio.post(apiurl,
-          data: {
-            'limit': 8,
-            'page': this._page
-          });
+      response = await dio.post(apiurl, data: {'limit': 8, 'page': this._page});
       var result = productModel.fromJson(response.data);
       var data = result.data;
       if (data.length < this._pageSize) {
@@ -321,77 +317,83 @@ class _HomePage extends State<HomePage> with AutomaticKeepAliveClientMixin {
         physics: NeverScrollableScrollPhysics(),
         itemCount: this.list.length,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Color.fromRGBO(0, 0, 0, 0.06),
-                    blurRadius: 8,
-                    offset: Offset(0, 3))
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10)),
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: Image.network(
-                      this.list[index].pic,
-                      fit: BoxFit.cover,
+          return InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, '/product/detial',
+                        arguments: {"id": this.list[index].id});
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                      color: Color.fromRGBO(0, 0, 0, 0.06),
+                      blurRadius: 8,
+                      offset: Offset(0, 3))
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10)),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Image.network(
+                        this.list[index].pic,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        height: ScreenAdaper.height(32),
-                        child: Text(
-                          "${this.list[index].title}",
-                          style: TextStyle(
-                              color: Theme.of(context).textTheme.title.color,
-                              fontSize: ScreenAdaper.size(13)),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(
-                        height: ScreenAdaper.height(10),
-                      ),
-                      Text.rich(
-                        TextSpan(
-                            text: '¥',
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          height: ScreenAdaper.height(32),
+                          child: Text(
+                            "${this.list[index].title}",
                             style: TextStyle(
-                                fontSize: ScreenAdaper.size(12),
-                                color: Theme.of(context).accentColor),
-                            children: [
-                              TextSpan(
-                                text: this.list[index].price.split('.')[0],
-                                style: TextStyle(
-                                    fontSize: ScreenAdaper.size(16),
-                                    color: Theme.of(context).accentColor),
-                              ),
-                              TextSpan(
-                                text: '.' +
-                                    this.list[index].price.split('.')[1],
-                                style: TextStyle(
-                                    fontSize: ScreenAdaper.size(14),
-                                    color: Theme.of(context).accentColor),
-                              )
-                            ]),
-                      )
-                    ],
+                                color: Theme.of(context).textTheme.title.color,
+                                fontSize: ScreenAdaper.size(13)),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        SizedBox(
+                          height: ScreenAdaper.height(10),
+                        ),
+                        Text.rich(
+                          TextSpan(
+                              text: '¥',
+                              style: TextStyle(
+                                  fontSize: ScreenAdaper.size(12),
+                                  color: Theme.of(context).accentColor),
+                              children: [
+                                TextSpan(
+                                  text: this.list[index].price.split('.')[0],
+                                  style: TextStyle(
+                                      fontSize: ScreenAdaper.size(16),
+                                      color: Theme.of(context).accentColor),
+                                ),
+                                TextSpan(
+                                  text: '.' +
+                                      this.list[index].price.split('.')[1],
+                                  style: TextStyle(
+                                      fontSize: ScreenAdaper.size(14),
+                                      color: Theme.of(context).accentColor),
+                                )
+                              ]),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },

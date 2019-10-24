@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../pages/common/Tab.dart';
+import '../pages/product/detial/index.dart';
 //配置路由
 final routes = {
-  '/': (context) => Tabs()
+  '/': (context) => Tabs(),
+  '/product/detial': (context, {arguments}) => ProductDetailPage(arguments:arguments)
 };
 
 //固定写法

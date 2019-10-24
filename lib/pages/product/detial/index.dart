@@ -1,23 +1,44 @@
-<<<<<<< HEAD
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../../services/ScreenAdaper.dart';
+import '../../../model/product_model.dart';
 
 class ProductDetailPage extends StatefulWidget {
   @override
+   Map arguments;
+  ProductDetailPage({Key key, this.arguments}) : super(key: key);
   _ProductDetailPageState createState() => _ProductDetailPageState();
 }
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
+  var id;
   @override
+    void initState() {
+       super.initState();
+       print(widget.arguments["id"]);
+       this.id = widget.arguments["id"];
+       this._getProductDetial();
+    }
+   void _getProductDetial () async{
+    var apiurl = 'http://localhost:4000/api/product/detial';
+    try {
+      Response response;
+      Dio dio = new Dio();
+      response = await dio.post(apiurl, data: {'id': this.id});
+      print(response);
+      
+    } catch (e) {
+      print(e);
+    }
+   }
   Widget build(BuildContext context) {
     ScreenAdaper.init(context);
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('商品详情'),
-      // ),
+      appBar: AppBar(
+        title: Text('商品详情'),
+      ),
       body: Container(
         color: Theme.of(context).backgroundColor,
         child: ListView(
@@ -64,6 +85,3 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     );
   }
 }
-=======
-import 'package:flutter/material.dart';
->>>>>>> xiugai
