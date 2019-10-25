@@ -3,8 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../../services/ScreenAdaper.dart';
-import '../../../model/product_model.dart';
-
+import '../../cart/CartNum.dart';
 class ProductDetailPage extends StatefulWidget {
   @override
    Map arguments;
@@ -66,16 +65,37 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             ),
             Container(
               padding: EdgeInsets.fromLTRB(ScreenAdaper.width(12), ScreenAdaper.height(12), ScreenAdaper.width(12),ScreenAdaper.height(12)),
-              child: Wrap(
-                children: <Widget>[
-                  Container(
-                    width: 60,
-                    height: 20,
-                    child: Center(
-                      child: Text('购物区商品'),
-                    ),
+              // child: Chip(
+              //   label: Text('拉蒙布兰达英伦伯雅双肩包 16.8L 大容量满足1天-2天短途旅行'),
+              //   avatar: CircleAvatar(
+              //       //左侧内容背景颜色
+              //       backgroundColor: Colors.green,
+              //       //内容文本
+              //       child: Text("购物区商品"),
+              //     ),
+              // ),
+              child: Text.rich(
+                TextSpan(
+                  text: '购物区商品',
+                  style: TextStyle(
+                    backgroundColor: Theme.of(context).accentColor,
+                    color: Theme.of(context).primaryColor
                   ),
-                  Text('拉蒙布兰达英伦伯雅双肩包 16.8L 大容量满足1天-2天短途旅行')
+                  children: [
+                    TextSpan(
+                      text: '拉蒙布兰达英伦伯雅双肩包 16.8L 大容量满足1天-2天短途旅行'
+                    )
+                  ]
+                )
+              ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  CartNum(),
+                  Text('库存999件')
                 ],
               ),
             )
