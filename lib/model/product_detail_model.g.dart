@@ -9,11 +9,9 @@ part of 'product_detail_model.dart';
 productDetailModel _$productDetailModelFromJson(Map<String, dynamic> json) {
   return productDetailModel(
     json['status'] as int,
-    (json['data'] as List)
-        ?.map((e) => e == null
-            ? null
-            : DetailContent.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    json['data'] == null
+        ? null
+        : DetialContent.fromJson(json['data'] as Map<String, dynamic>),
     json['msg'] as String,
   );
 }
@@ -25,8 +23,8 @@ Map<String, dynamic> _$productDetailModelToJson(productDetailModel instance) =>
       'msg': instance.msg,
     };
 
-DetailContent _$DetailContentFromJson(Map<String, dynamic> json) {
-  return DetailContent(
+DetialContent _$DetialContentFromJson(Map<String, dynamic> json) {
+  return DetialContent(
     json['id'] as int,
     json['title'] as String,
     json['pic'] as String,
@@ -40,11 +38,11 @@ DetailContent _$DetailContentFromJson(Map<String, dynamic> json) {
     json['recommend'] as int,
     json['author'] as String,
     json['groupImg'] as String,
-    json['attr'] as String,
+    json['attr'] as String
   );
 }
 
-Map<String, dynamic> _$DetailContentToJson(DetailContent instance) =>
+Map<String, dynamic> _$DetialContentToJson(DetialContent instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
@@ -59,5 +57,5 @@ Map<String, dynamic> _$DetailContentToJson(DetailContent instance) =>
       'recommend': instance.recommend,
       'author': instance.author,
       'groupImg': instance.groupImg,
-      'attr': instance.attr,
+      'attr': instance.attr
     };

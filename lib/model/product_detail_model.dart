@@ -10,7 +10,7 @@ part 'product_detail_model.g.dart';
   int status;
 
   @JsonKey(name: 'data')
-  List<DetailContent> data;
+  DetialContent data;
 
   @JsonKey(name: 'msg')
   String msg;
@@ -25,7 +25,7 @@ part 'product_detail_model.g.dart';
 
   
 @JsonSerializable()
-  class DetailContent extends Object {
+  class DetialContent extends Object {
 
   @JsonKey(name: 'id')
   int id;
@@ -69,11 +69,13 @@ part 'product_detail_model.g.dart';
   @JsonKey(name: 'attr')
   String attr;
 
-  DetailContent(this.id,this.title,this.pic,this.price,this.catid,this.content,this.time,this.visits,this.istop,this.status,this.recommend,this.author,this.groupImg,this.attr,);
+  @JsonKey(name: 'count')
+  int count = 1;
+  DetialContent(this.id,this.title,this.pic,this.price,this.catid,this.content,this.time,this.visits,this.istop,this.status,this.recommend,this.author,this.groupImg,this.attr);
 
-  factory DetailContent.fromJson(Map<String, dynamic> srcJson) => _$DataFromJson(srcJson);
+  factory DetialContent.fromJson(Map<String, dynamic> srcJson) => _$DetialContentFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$DataToJson(this);
+  Map<String, dynamic> toJson() => _$DetialContentToJson(this);
 
 }
 

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import './router/index.dart';
+import './provider/Cart.dart';
+import 'package:provider/provider.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -10,7 +13,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(builder: (_) => Cart())
+      ],
+      child: MaterialApp(
       initialRoute: '/',
       onGenerateRoute: onGenerateRoute,
       theme: ThemeData(
@@ -34,6 +41,7 @@ class _MyAppState extends State<MyApp> {
           ),
         )
       ),
+    ),
     );
   }
 }

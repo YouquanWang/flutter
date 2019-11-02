@@ -110,7 +110,7 @@ class _CartItemState extends State<CartItem> {
                       height: ScreenAdaper.height(20),
                       bottom: 0,
                       right: 0,
-                      child: CartNum(),
+                      // child: CartNum(),
                     )
                   ],
                 )),

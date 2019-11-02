@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../../services/ScreenAdaper.dart';
-
+import '../../model/product_detail_model.dart';
+import '../../services/CartService.dart';
 class CartNum extends StatefulWidget {
-  CartNum({Key key}) : super(key: key);
+  DetialContent _content;
+  CartNum(this._content,{Key key}) : super(key: key);
 
   _CartNumState createState() => _CartNumState();
 }
 
 class _CartNumState extends State<CartNum> {
+  DetialContent _content;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this._content = widget._content;
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +36,13 @@ class _CartNumState extends State<CartNum> {
 
   Widget _leftBtn() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        setState(() {
+          if (this._content.count > 1) {
+          this._content.count = this._content.count-1;
+        }
+        });
+      },
       child: Container(
         alignment: Alignment.center,
         width: ScreenAdaper.width(20),
@@ -41,8 +56,10 @@ class _CartNumState extends State<CartNum> {
   Widget _rightBtn() {
     return InkWell(
       onTap: (){
-
-
+        setState(() {
+          this._content.count = this._content.count+1;
+          CartService.addCart(this._content);
+        });
       },
       child: Container(
         alignment: Alignment.center,
@@ -60,7 +77,7 @@ class _CartNumState extends State<CartNum> {
       width: ScreenAdaper.width(30),
       color: Color.fromRGBO(245, 245, 245, 1),
       height: ScreenAdaper.height(20),
-      child: Text("1",
+      child: Text("${this._content.count}",
        style: TextStyle(
            fontSize: ScreenAdaper.size(12),
            fontWeight: FontWeight.bold,
